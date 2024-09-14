@@ -6,7 +6,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w8xw7f2hyv5vd0r-%#rbcxjm)99ao3jvbvhfe0#e^xj$u9ycps'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-w8xw7f2hyv5vd0r-%#rbcxjm)99ao3jvbvhfe0#e^xj$u9ycps')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =os.getenv('DEBUG', 'False') == 'True'
@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'todo_drf.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://postgres:ZJsNJOuDTvelgKSDzJvMaMlxkjtcIvLF@junction.proxy.rlwy.net:11688/railway')
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL', 'postgresql://postgres:ZJsNJOuDTvelgKSDzJvMaMlxkjtcIvLF@junction.proxy.rlwy.net:11688/railway'))
 }
 
 # Password validation
