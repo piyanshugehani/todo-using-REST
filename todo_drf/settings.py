@@ -1,6 +1,6 @@
 from pathlib import Path
 import dj_database_url
-from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,10 +9,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w8xw7f2hyv5vd0r-%#rbcxjm)99ao3jvbvhfe0#e^xj$u9ycps'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG =os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost','todo-using-rest-production.up.railway.app/','127.0.0.1']
-CSRF_TRUSTED_ORIGINS=['https://todo-using-rest-production.up.railway.app/']
+ALLOWED_HOSTS = ['localhost','todo-using-rest-production.up.railway.app','127.0.0.1']
+CSRF_TRUSTED_ORIGINS=['https://todo-using-rest-production.up.railway.app']
 
 # Application definition
 INSTALLED_APPS = [
@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'todo_drf.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': dj_database_url.config(default='postgresql://postgres:ZJsNJOuDTvelgKSDzJvMaMlxkjtcIvLF@junction.proxy.rlwy.net:11688/railway')
 }
 
 # Password validation
