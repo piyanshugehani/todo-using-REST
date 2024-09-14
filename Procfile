@@ -1,1 +1,1 @@
-web: gunicorn todo_drf.wsgi:application --bind 0.0.0.0:8000
+web: gunicorn todo_drf.WSGI_APPLICATION

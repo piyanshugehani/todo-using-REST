@@ -11,7 +11,8 @@ SECRET_KEY = 'django-insecure-w8xw7f2hyv5vd0r-%#rbcxjm)99ao3jvbvhfe0#e^xj$u9ycps
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','https://todo-using-rest-production.up.railway.app/','*']
+ALLOWED_HOSTS = ['localhost','todo-using-rest-production.up.railway.app/','127.0.0.1']
+CSRF_TRUSTED_ORIGINS=['https://todo-using-rest-production.up.railway.app/']
 
 # Application definition
 INSTALLED_APPS = [
