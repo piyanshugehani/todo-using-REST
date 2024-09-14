@@ -1,2 +1,1 @@
-web: gunicorn todo_drf.wsgi:application --log-file
-
+web: gunicorn todo_drf.wsgi:application --bind 0.0.0.0:8000
