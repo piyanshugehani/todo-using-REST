@@ -1,5 +1,7 @@
 from pathlib import Path
 import dj_database_url
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,7 +11,7 @@ SECRET_KEY = 'django-insecure-w8xw7f2hyv5vd0r-%#rbcxjm)99ao3jvbvhfe0#e^xj$u9ycps
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://todo-using-rest-production.up.railway.app/','localhost']
+ALLOWED_HOSTS = ['localhost','https://todo-using-rest-production.up.railway.app/','*']
 
 # Application definition
 INSTALLED_APPS = [
