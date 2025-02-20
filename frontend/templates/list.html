@@ -118,14 +118,14 @@
 
         document.addEventListener('DOMContentLoaded', loadTasks);
 
-        document.getElementById('form').addEventListener('submit', function(e) {
+        document.getElementById('form').addEventListener('submit', function (e) {
             e.preventDefault();
             const title = document.getElementById('title').value;
-
+        
             if (title === '') return;
-
+        
             const data = { title: title };
-
+        
             fetch('/tasks/add/', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -135,6 +135,12 @@
                 }
             })
             .then(response => response.json())
+            .then(task => {
+                // Send data to the webhook
+                return fetch('https://piyanshu.app.n8n.cloud/webhook/7e474783-7445-43b6-a753-c9ce141e082c', {
+                    method: 'POST'
+                });
+            })
             .then(() => {
                 // Reload tasks after adding
                 loadTasks();
@@ -142,7 +148,7 @@
             })
             .catch(error => console.error('Error adding task:', error));
         });
-
+        
         function deleteItem(index) {
             const taskId = tasks[index].id;
 
